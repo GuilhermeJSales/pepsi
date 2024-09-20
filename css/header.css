@@ -1,0 +1,125 @@
+/* HEADER */
+
+header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+nav,
+ul {
+  display: flex;
+  gap: 2.187rem;
+  align-items: center;
+}
+
+.mobileMenu {
+  display: none;
+}
+
+nav a {
+  color: #fff;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: text-decoration 0.3s ease-in-out;
+  position: relative;
+}
+
+nav li a::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: #fff;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+nav a:hover::before {
+  width: 100%;
+}
+
+.payButton {
+  border: 2px solid #fff;
+  border-radius: 3.125rem;
+  padding: 1rem 2.187rem;
+  font-size: 0.75rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.payButton:hover {
+  background: #fff;
+  border: 2px solid #103f70;
+  color: #103f70;
+}
+
+.closeMobile {
+  display: none;
+}
+
+@media only screen and (max-width: 1180px) {
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2.187rem;
+    align-items: flex-start;
+  }
+
+  nav {
+    background: #19195a;
+    box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    width: 40vw;
+    position: fixed;
+    top: 0;
+    left: -110%;
+    padding: 50px;
+    z-index: 100;
+    flex-direction: column;
+    align-items: flex-start;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+  }
+
+  nav.active {
+    left: 0;
+    opacity: 1;
+  }
+
+  .mobileMenu {
+    padding: 20px;
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    display: block;
+  }
+
+  .mobileMenu::after {
+    content: '';
+    display: block;
+    width: 1.4rem;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: #fff 0px 8px, #fff 0px -8px;
+    transition: 0.5s ease-in-out;
+  }
+
+  .mobileMenu.active::after {
+    transform: rotate(-90deg);
+    width: 4px;
+    height: 4px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  nav {
+    width: 90vw;
+  }
+}
